@@ -1,0 +1,15 @@
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\bin\Debug\Phidget_Example.exe.config
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\bin\Debug\Phidget_Example.exe
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\bin\Debug\Phidget_Example.pdb
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\bin\Debug\Phidget22.NET.dll
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\bin\Debug\Phidget22.NET.pdb
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\bin\Debug\Phidget22.NET.xml
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\obj\Debug\Phidget_Example.csprojAssemblyReference.cache
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\obj\Debug\Phidget_Example.csproj.CoreCompileInputs.cache
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\obj\Debug\Phidget_Example.csproj.CopyComplete
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\obj\Debug\Phidget_Example.exe
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\obj\Debug\Phidget_Example.pdb
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\bin\Debug\dll\x86\phidget22.dll
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\bin\Debug\dll\x64\phidget22.dll
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\bin\Debug\M2Mqtt.Net.dll
+C:\Users\Bruger\Downloads\Phidget_1023_1_CSharp_VisualStudio_Example\CSharp_VisualStudio\bin\Debug\M2Mqtt.Net.pdb
