@@ -1,0 +1,12 @@
+homeassistant: false
+permit_join: true
+mqtt:
+  base_topic: DIPS8
+  server: mqtt://test.mosquitto.org
+serial:
+  port: \\.\COM4
+devices:
+  '0x842e14fffe065bbc':
+    friendly_name: '0x842e14fffe065bbc'
+  '0x588e81fffe2e5bb2':
+    friendly_name: '0x588e81fffe2e5bb2'
