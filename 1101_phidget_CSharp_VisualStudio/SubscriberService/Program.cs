@@ -14,9 +14,11 @@ namespace SubscriberService
         static readonly string PIR_ID = "DIPS8/0x842e14fffe065bbc";
         static readonly TimeSpan startMorning = new TimeSpan(12, 0, 0); // Modified while debugging
         static readonly TimeSpan endMorning = new TimeSpan(15, 0, 0); // Modified while debugging
+        private static readonly TimeSpan pillPlaceThreshold = new TimeSpan(0, 0, 20); // time to put pillbox back to its place
         static readonly int MIN_PILL_DURATION = 5; // Spend at least 5 seconds taking pills 
         static bool pillsTaken = false;
         static bool isAwake = false;
+        static bool pillboxOff;
         static long pillsOffTime = -1;
         private static Timer timer;
 
@@ -37,6 +39,19 @@ namespace SubscriberService
         {
             TimeSpan currentTime = new DateTimeOffset(DateTime.Now).TimeOfDay;
             Console.WriteLine("Time is now "+ currentTime +". You can eat breakfast");
+        }
+
+        private static void SetPillboxReminder(long pillsOffTime)
+        {
+            var pillsOffDateTime = DateTime.FromBinary(pillsOffTime);
+            do
+            {
+                var currentTime = DateTime.Now;
+                var timeDifference = currentTime.Subtract(pillsOffDateTime);
+                if (timeDifference <= pillPlaceThreshold) continue;
+                Console.WriteLine("Remember to set your pill box back to where it belongs.");
+                return;
+            } while (pillboxOff);
         }
 
 
@@ -68,6 +83,8 @@ namespace SubscriberService
                 {
                     Console.WriteLine("Pills off");
                     pillsOffTime = new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
+                    pillboxOff = true;
+                    SetPillboxReminder(pillsOffTime);
                 }
                 if (receivedProps[0] == "Tag on" && tag == PILL_TAG)
                 {
@@ -75,6 +92,7 @@ namespace SubscriberService
                     {
                         var endTime = new DateTimeOffset(DateTime.Now);
                         var timeSpent = endTime.ToUnixTimeSeconds() - pillsOffTime;
+                        pillboxOff = false;
                         if(timeSpent >= MIN_PILL_DURATION) // Spend at least 5 seconds taking pills
                         {
                             pillsTaken = true;
