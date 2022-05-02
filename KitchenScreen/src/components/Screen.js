@@ -11,27 +11,26 @@ function Screen({ payload }) {
   }, [setTime]);
 
   const handlePayload = (payload) => {
-    console.log(payload);
     if (!payload) return "";
-    if (payload.includes("GOOD_MORNING")) {
-      document.body.style = "background: #FFF;";
-      fontColor = "#000";
-      return "Good Morning. Remember to take your pill.";
-    }
-
-    if (payload.includes("BREAKFAST_TIME:")) {
-      document.body.style = "background: #0F0;";
-      fontColor = "#000";
+    //kitchen routes
+    console.log(payload);
+    if (payload.includes("WAIT")) {
+      fontColor = "#FFF";
+      document.body.style = "background: #F00;";
       return (
-        "Time has passed " +
-        payload.substring(15) +
-        ". You can eat breakfast now."
+        "Remember to wait before eating. Breakfast is at: " +
+        payload.substring(5)
       );
     }
     if (payload.includes("PUT_PILLS_BACK")) {
       fontColor = "#FFF";
       document.body.style = "background: #F00;";
-      return "Please put the pills back!";
+      return "Remember to set your pill box back to where it belongs.";
+    }
+    if (payload.includes("PILLS_TAKEN_AGAIN")) {
+      fontColor = "#FFF";
+      document.body.style = "background: #F00;";
+      return "DON'T YOU DARE TAKE MORE PILLS!";
     }
     if (payload.includes("PILLS_TAKEN:")) {
       fontColor = "#000";
@@ -43,11 +42,20 @@ function Screen({ payload }) {
         "I will remind you to eat in an hour"
       );
     }
+    if (payload.includes("BREAKFAST_TIME:")) {
+      document.body.style = "background: #0F0;";
+      fontColor = "#000";
+      return (
+        "Time has passed " +
+        payload.substring(15) +
+        ". You can eat breakfast now."
+      );
+    }
   };
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h3 style={{ color: fontColor }}>Bedroom: {time}</h3>
+      <h3 style={{ color: fontColor }}>Kitchen: {time}</h3>
       <h1 style={{ margin: "auto", color: fontColor }}>
         {handlePayload(payload.message)}
       </h1>
