@@ -3,7 +3,7 @@
 
 ## Files to execute and run:
 
-Controller.exe (located in src/1101_phidget_CSharp_VisualStudio/SubscriberService/bin/Release/net5.0/)
+Controller.exe (located in src/Controller/bin/Release/netcoreapp3.1/)
 
 SensorReader.exe (located in src/RFID_TAG_PROJECT/CSharp_VisualStudio/bin/Release/)
 
