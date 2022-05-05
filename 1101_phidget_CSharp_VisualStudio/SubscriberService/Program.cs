@@ -16,9 +16,10 @@ namespace SubscriberService
         static readonly string BEDROOM_SCREEN = "DIPS8/BEDROOM_SCREEN";
         static readonly string KITCHEN_SCREEN = "DIPS8/KITCHEN_SCREEN";
         static readonly TimeSpan startMorning = new TimeSpan(12, 0, 0); // Modified while debugging
-        static readonly TimeSpan endMorning = new TimeSpan(15, 0, 0); // Modified while debugging
+        static readonly TimeSpan endMorning = new TimeSpan(17, 0, 0); // Modified while debugging
 		private static readonly TimeSpan pillPlaceThreshold = new TimeSpan(0, 0, 20); // time to put pillbox back to its place
         static readonly int MIN_PILL_DURATION = 5; // Spend at least 5 seconds taking pills 
+        static readonly int DEMO_TIME = 30; // Spend at least 5 seconds taking pills 
         static bool pillsTaken = false;
         static bool isAwake = false;
 		static bool pillboxOff;
@@ -43,8 +44,10 @@ namespace SubscriberService
         private static void breakfastReminder()
         {
             TimeSpan currentTime = new DateTimeOffset(DateTime.Now).TimeOfDay;
-            Console.WriteLine("Time is now "+ currentTime +". You can eat breakfast");
-            client.Publish(BEDROOM_SCREEN, Encoding.ASCII.GetBytes("BREAKFAST_TIME: " + currentTime));
+            var currentTimeString = currentTime.ToString().Substring(0, 5);
+            Console.WriteLine("Time is now "+ currentTimeString + ". You can eat breakfast");
+            client.Publish(BEDROOM_SCREEN, Encoding.ASCII.GetBytes("BREAKFAST_TIME: " + currentTimeString));
+            client.Publish(KITCHEN_SCREEN, Encoding.ASCII.GetBytes("BREAKFAST_TIME: " + currentTimeString));
         }
 		
 		private static void SetPillboxReminder(int timeOut)
@@ -57,7 +60,7 @@ namespace SubscriberService
                     client.Publish(KITCHEN_SCREEN, Encoding.ASCII.GetBytes("PUT_PILLS_BACK"));
                     client.Publish(BEDROOM_SCREEN, Encoding.ASCII.GetBytes("PUT_PILLS_BACK"));
                     //SetPillboxReminder(60);
-                    SetPillboxReminder(5);
+                    SetPillboxReminder(6);
                 }
             }, null, timeOut*1000, int.MaxValue);
         }
@@ -126,10 +129,13 @@ namespace SubscriberService
                         {
                             pillsTaken = true;
                             //var breakfastTime = endTime.AddHours(1);
-                            breakfastTime = endTime.AddSeconds(10);
-                            client.Publish(BEDROOM_SCREEN, Encoding.ASCII.GetBytes("PILLS_TAKEN: " + endTime.TimeOfDay));
-                            Console.WriteLine("Good job! You took the pills at: " + endTime.TimeOfDay);
-                            Console.WriteLine("Remember to wait an hour before eating! \nI will remind you to eat breakfast at: " + breakfastTime.TimeOfDay);
+                            breakfastTime = endTime.AddSeconds(DEMO_TIME);
+                            string takenAt = endTime.TimeOfDay.ToString().Substring(0,5);
+                            string breakfastTimeString = breakfastTime.TimeOfDay.ToString().Substring(0, 5);
+                            client.Publish(BEDROOM_SCREEN, Encoding.ASCII.GetBytes("PILLS_TAKEN: " + takenAt));
+                            client.Publish(KITCHEN_SCREEN, Encoding.ASCII.GetBytes("PILLS_TAKEN: " + takenAt));
+                            Console.WriteLine("Good job! You took the pills at: " + takenAt);
+                            Console.WriteLine("Remember to wait an hour before eating! \nI will remind you to eat breakfast at: " + breakfastTimeString);
                             breakfastTimer(breakfastTime.TimeOfDay);
                         }
                     }
