@@ -9,6 +9,7 @@ namespace ConsoleApplication
 	class Program
 	{
 		public static MqttClient client { get; private set; }
+		public static String topic = "DIPS8/pills";
 
 
 		private static void Rfid0_Tag(object sender, Phidget22.Events.RFIDTagEventArgs e)
@@ -16,7 +17,7 @@ namespace ConsoleApplication
 			Console.WriteLine("Tag: " + e.Tag);
 			Console.WriteLine("Protocol: " + e.Protocol);
 			Console.WriteLine("----------");
-			client.Publish("DIPS8", Encoding.UTF8.GetBytes(("Tag on: " + e.Tag)));
+			client.Publish(topic, Encoding.UTF8.GetBytes(("Tag on: " + e.Tag)));
 
 		}
 
@@ -25,7 +26,7 @@ namespace ConsoleApplication
 			Console.WriteLine("Tag lost: " + e.Tag);
 			Console.WriteLine("Protocol: " + e.Protocol);
 			Console.WriteLine("----------");
-			client.Publish("DIPS8", Encoding.UTF8.GetBytes(("Tag off: " + e.Tag)));
+			client.Publish(topic, Encoding.UTF8.GetBytes(("Tag off: " + e.Tag)));
 
 		}
 
