@@ -24,6 +24,7 @@ namespace SubscriberService
 		static bool pillboxOff;
         static long pillsOffTime = -1;
         private static Timer timer;
+        private static Timer pillsOffReminder;
         static DateTimeOffset breakfastTime;
 
         private static void breakfastTimer(TimeSpan breakfastTime) { 
@@ -46,17 +47,19 @@ namespace SubscriberService
             client.Publish(BEDROOM_SCREEN, Encoding.ASCII.GetBytes("BREAKFAST_TIME: " + currentTime));
         }
 		
-		private static void SetPillboxReminder(long pillsOffTime)
+		private static void SetPillboxReminder(int timeOut)
         {
-            var pillsOffDateTime = DateTime.FromBinary(pillsOffTime);
-            do
+            pillsOffReminder = new Timer(x =>
             {
-                var currentTime = DateTime.Now;
-                var timeDifference = currentTime.Subtract(pillsOffDateTime);
-                if (timeDifference <= pillPlaceThreshold) continue;
-                Console.WriteLine("Remember to set your pill box back to where it belongs.");
-                return;
-            } while (pillboxOff);
+                if (pillboxOff)
+                {
+                    Console.WriteLine("Remember to set your pill box back to where it belongs.");
+                    client.Publish(KITCHEN_SCREEN, Encoding.ASCII.GetBytes("PUT_PILLS_BACK"));
+                    client.Publish(BEDROOM_SCREEN, Encoding.ASCII.GetBytes("PUT_PILLS_BACK"));
+                    //SetPillboxReminder(60);
+                    SetPillboxReminder(5);
+                }
+            }, null, timeOut*1000, int.MaxValue);
         }
 
 
@@ -108,7 +111,8 @@ namespace SubscriberService
                         pillsOffTime = new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
                     }
 					pillboxOff = true;
-					SetPillboxReminder(pillsOffTime);
+					//SetPillboxReminder(60);
+                    SetPillboxReminder(6);
                 }
                 if (receivedProps[0] == "Tag on" && tag == PILL_TAG)
                 {
@@ -149,7 +153,7 @@ namespace SubscriberService
                 client.Subscribe(new string[] { PIR_KITCHEN }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
             }
             //Console.WriteLine("Hello World!");
-            Console.WriteLine("BreakfastTime: " + breakfastTime.TimeOfDay);
+            //Console.WriteLine("BreakfastTime: " + breakfastTime.TimeOfDay);
         }
     }
 }

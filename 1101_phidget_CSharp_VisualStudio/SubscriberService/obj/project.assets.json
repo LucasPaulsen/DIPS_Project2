@@ -96,24 +96,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/dkAndPet/.nuget/packages/": {}
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dkAndPet/code_au/DIPS_Project2/1101_phidget_CSharp_VisualStudio/SubscriberService/SubscriberService.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive - Aarhus Universitet\\DIPS\\DIPS_Project2\\1101_phidget_CSharp_VisualStudio\\SubscriberService\\SubscriberService.csproj",
       "projectName": "SubscriberService",
-      "projectPath": "/Users/dkAndPet/code_au/DIPS_Project2/1101_phidget_CSharp_VisualStudio/SubscriberService/SubscriberService.csproj",
-      "packagesPath": "/Users/dkAndPet/.nuget/packages/",
-      "outputPath": "/Users/dkAndPet/code_au/DIPS_Project2/1101_phidget_CSharp_VisualStudio/SubscriberService/obj/",
+      "projectPath": "C:\\Users\\Lenovo\\OneDrive - Aarhus Universitet\\DIPS\\DIPS_Project2\\1101_phidget_CSharp_VisualStudio\\SubscriberService\\SubscriberService.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lenovo\\OneDrive - Aarhus Universitet\\DIPS\\DIPS_Project2\\1101_phidget_CSharp_VisualStudio\\SubscriberService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/dkAndPet/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -153,16 +155,8 @@
         "warn": true,
         "downloadDependencies": [
           {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.osx-x64",
-            "version": "[5.0.15, 5.0.15]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.16, 5.0.16]"
           }
         ],
         "frameworkReferences": {
@@ -170,7 +164,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/Users/dkAndPet/.dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   },
