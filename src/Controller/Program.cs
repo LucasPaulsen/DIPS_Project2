@@ -159,8 +159,7 @@ namespace SubscriberService
                 client.Subscribe(new string[] { PIR_BEDROOM }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
                 client.Subscribe(new string[] { PIR_KITCHEN }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
             }
-            //Console.WriteLine("Hello World!");
-            //Console.WriteLine("BreakfastTime: " + breakfastTime.TimeOfDay);
+
         }
     }
 }
