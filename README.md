@@ -3,9 +3,9 @@
 
 ## Files to execute and run:
 
-Controller.exe
+Controller.exe (located in src/1101_phidget_CSharp_VisualStudio/SubscriberService/bin/Release/net5.0/)
 
-SensorReader.exe
+SensorReader.exe (located in src/RFID_TAG_PROJECT/CSharp_VisualStudio/bin/Release/)
 
 Run zigbee2mqtt-master with the command: 'npm start'
 
